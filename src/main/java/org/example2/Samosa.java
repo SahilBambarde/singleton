@@ -12,8 +12,12 @@ public class Samosa {
     // Lazy way of creating singleton object
     public static Samosa getSamosa(){
         // Object of  this call
-        if(samosa==null){
-            samosa=new Samosa();
+        if (samosa==null){
+            synchronized (Samosa.class){
+                if (samosa==null){
+                    samosa = new Samosa();
+                }
+            }
         }
         return samosa;
     }
